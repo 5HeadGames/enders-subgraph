@@ -1,0 +1,24 @@
+{
+  "output": "generated/sample.",
+  "chain": "harmony",
+  "datasources": [
+    {
+      "address": "0xE1C04284652be3771D514e5f05F823b35075D70F",
+      "startBlock": 20134054,
+      "module": "erc1155"
+    },
+    {
+      "address": "0x51BE175Fa7A56B98BCFFA124D6Bd31480b093214",
+      "startBlock": 21013637,
+      "module": "erc1155"
+    },
+    {
+      "address": "0xAd6f94bDefB6D5ae941392Da5224ED083AE33adc",
+      "startBlock": 25855600,
+      "module": [
+        "erc1155",
+        "accesscontrol"
+      ]
+    }
+  ]
+}
