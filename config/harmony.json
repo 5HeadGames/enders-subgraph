@@ -1,6 +1,6 @@
 {
   "output": "generated/sample.",
-  "chain": "harmony",
+  "chain": "mainnet",
   "datasources": [
     {
       "address": "0xE1C04284652be3771D514e5f05F823b35075D70F",

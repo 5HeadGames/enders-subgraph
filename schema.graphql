@@ -13,7 +13,6 @@ type Account @entity {
   roleGrantedSender: [RoleGranted!]! @derivedFrom(field: "sender")
   roleRevoked: [RoleRevoked!]! @derivedFrom(field: "account")
   roleRevokedSender: [RoleRevoked!]! @derivedFrom(field: "sender")
-  events: [Event!]! @derivedFrom(field: "emitter")
 }
 type ERC1155Contract @entity {
   id: ID!
@@ -51,7 +50,6 @@ type ERC1155Operator @entity {
 }
 type ERC1155Transfer implements Event @entity {
   id: ID!
-  emitter: Account!
   transaction: Transaction!
   timestamp: BigInt!
   contract: ERC1155Contract!
@@ -91,7 +89,6 @@ type AccessControlRoleMember @entity {
 }
 type RoleAdminChanged implements Event @entity {
   id: ID!
-  emitter: Account!
   transaction: Transaction!
   timestamp: BigInt!
   role: AccessControlRole!
@@ -100,7 +97,6 @@ type RoleAdminChanged implements Event @entity {
 }
 type RoleGranted implements Event @entity {
   id: ID!
-  emitter: Account!
   transaction: Transaction!
   timestamp: BigInt!
   role: AccessControlRole!
@@ -109,7 +105,6 @@ type RoleGranted implements Event @entity {
 }
 type RoleRevoked implements Event @entity {
   id: ID!
-  emitter: Account!
   transaction: Transaction!
   timestamp: BigInt!
   role: AccessControlRole!
@@ -119,7 +114,6 @@ type RoleRevoked implements Event @entity {
 interface Event {
   id: ID!
   transaction: Transaction!
-  emitter: Account!
   timestamp: BigInt!
 }
 type Transaction @entity {
