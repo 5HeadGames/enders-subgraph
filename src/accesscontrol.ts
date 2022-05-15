@@ -16,9 +16,9 @@ import {
 
 import {events, transactions} from "@amxx/graphprotocol-utils";
 
-import {fetchAccount} from "../fetch/account";
+import {fetchAccount} from "./fetch/account";
 
-import {fetchRole, fetchAccessControl, fetchAccessControlRole} from "../fetch/accesscontrol";
+import {fetchRole, fetchAccessControl, fetchAccessControlRole} from "./fetch/accesscontrol";
 
 export function handleRoleAdminChanged(event: RoleAdminChangedEvent): void {
   let contract = fetchAccessControl(event.address);

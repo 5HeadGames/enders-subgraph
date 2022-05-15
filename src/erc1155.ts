@@ -11,7 +11,7 @@ import {
 
 import {constants, decimals, events, transactions} from "@amxx/graphprotocol-utils";
 
-import {fetchAccount} from "../fetch/account";
+import {fetchAccount} from "./fetch/account";
 
 import {
   fetchERC1155,
@@ -19,7 +19,7 @@ import {
   fetchERC1155Balance,
   fetchERC721Operator,
   replaceURI,
-} from "../fetch/erc1155";
+} from "./fetch/erc1155";
 
 function registerTransfer(
   event: ethereum.Event,

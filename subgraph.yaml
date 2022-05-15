@@ -17,7 +17,7 @@ dataSources:
         - ERC1155Contract
       abis:
         - name: IERC1155
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC1155MetadataURI.json
+          file: ./abis/Dracul.json
       eventHandlers:
         - event: ApprovalForAll(indexed address,indexed address,bool)
           handler: handleApprovalForAll
@@ -27,7 +27,7 @@ dataSources:
           handler: handleTransferSingle
         - event: URI(string,indexed uint256)
           handler: handleURI
-      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/erc1155.ts
+      file: ./src/erc1155.ts
   - kind: ethereum/contract
     name: erc1155-1
     network: harmony
@@ -43,7 +43,7 @@ dataSources:
         - ERC1155Contract
       abis:
         - name: IERC1155
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC1155MetadataURI.json
+          file: ./abis/Dracul.json
       eventHandlers:
         - event: ApprovalForAll(indexed address,indexed address,bool)
           handler: handleApprovalForAll
@@ -53,7 +53,7 @@ dataSources:
           handler: handleTransferSingle
         - event: URI(string,indexed uint256)
           handler: handleURI
-      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/erc1155.ts
+      file: ./src/erc1155.ts
   - kind: ethereum/contract
     name: erc1155-2
     network: harmony
@@ -69,7 +69,7 @@ dataSources:
         - ERC1155Contract
       abis:
         - name: IERC1155
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC1155MetadataURI.json
+          file: ./abis/Dracul.json
       eventHandlers:
         - event: ApprovalForAll(indexed address,indexed address,bool)
           handler: handleApprovalForAll
@@ -79,7 +79,7 @@ dataSources:
           handler: handleTransferSingle
         - event: URI(string,indexed uint256)
           handler: handleURI
-      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/erc1155.ts
+      file: ./src/erc1155.ts
   - kind: ethereum/contract
     name: accesscontrol
     network: harmony
@@ -95,7 +95,7 @@ dataSources:
         - AccessControl
       abis:
         - name: AccessControl
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/IAccessControl.json
+          file: ./abis/Dracul.json
       eventHandlers:
         - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
           handler: handleRoleAdminChanged
@@ -103,4 +103,4 @@ dataSources:
           handler: handleRoleGranted
         - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
           handler: handleRoleRevoked
-      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/accesscontrol.ts
+      file: ./src/accesscontrol.ts

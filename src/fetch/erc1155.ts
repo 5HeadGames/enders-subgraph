@@ -6,13 +6,13 @@ import {
   ERC1155Token,
   ERC1155Balance,
   ERC1155Operator,
-} from "../generated/schema";
+} from "../../generated/schema";
 
-import {IERC1155} from "../generated/erc1155/IERC1155";
+import {IERC1155} from "../../generated/erc1155/IERC1155";
 
 import {constants} from "@amxx/graphprotocol-utils";
 
-import {fetchAccount} from "../fetch/account";
+import {fetchAccount} from "./account";
 
 export function replaceURI(uri: string, identifier: BigInt): string {
   return uri.replaceAll("{id}", identifier.toHex().slice(2).padStart(64, "0"));
