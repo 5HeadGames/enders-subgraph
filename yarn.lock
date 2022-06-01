@@ -2,13 +2,13 @@
 # yarn lockfile v1
 
 
-"@amxx/graphprotocol-utils@^1.1.0-alpha.2":
-  version "1.1.0-alpha.2"
-  resolved "https://registry.yarnpkg.com/@amxx/graphprotocol-utils/-/graphprotocol-utils-1.1.0-alpha.2.tgz#a9203de9b4073a28e3fbccc4644737d60f399520"
-  integrity sha512-fK8VG7pd/XAqSFSUZrAbfzxgbEJTgwbJ0+OtFZ73l9siES2VaQ0Tzxo6qBmzfV1tZQZwP+s5qUC9uzJ+hheSOA==
+"@amxx/graphprotocol-utils@^1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@amxx/graphprotocol-utils/-/graphprotocol-utils-1.1.0.tgz#2e947df618adfc44f620eac8121f6def32f250e7"
+  integrity sha512-oVHp/EMNyl2c54n+EmTzDweQ3yuHGAyIEesIMYOu+lMBUFRgLDKBhrp9c4XB4zJ6JKs0DsCxuKuN7CIjweIjdg==
   dependencies:
-    "@graphprotocol/graph-ts" "^0.24.0"
-    yargs "^17.2.1"
+    "@graphprotocol/graph-ts" "^0.26.0"
+    yargs "^17.5.1"
 
 "@babel/code-frame@^7.0.0":
   version "7.16.7"
@@ -214,10 +214,10 @@
     "@ethersproject/properties" "^5.6.0"
     "@ethersproject/strings" "^5.6.0"
 
-"@graphprotocol/graph-cli@0.29.2":
-  version "0.29.2"
-  resolved "https://registry.yarnpkg.com/@graphprotocol/graph-cli/-/graph-cli-0.29.2.tgz#a97ba3c72aaeac19448cf7ec1e0c86290c41165e"
-  integrity sha512-I95li1xkLu1eKUw8YV6A/ZoymM544sYIt1UxjlgB/kciw0f5YB5lwDAWMkeoRPKDQ0DjcofnArXiVheBCB8pRw==
+"@graphprotocol/graph-cli@^0.30.2":
+  version "0.30.2"
+  resolved "https://registry.yarnpkg.com/@graphprotocol/graph-cli/-/graph-cli-0.30.2.tgz#b48be217d961ace9b37284a24e1bb669ed340fd0"
+  integrity sha512-qbH5JnSlPUfE20pG/xBAWbh70wQ8J/QeNoWt8fN9OHKEJc+5emdMfC30tVU4/Q4pJ+nC6DHSli8znZWZpCD7EA==
   dependencies:
     assemblyscript "0.19.10"
     binary-install-raw "0.0.13"
@@ -245,32 +245,32 @@
     which "2.0.2"
     yaml "1.9.2"
 
-"@graphprotocol/graph-ts@0.26.0":
+"@graphprotocol/graph-ts@^0.26.0":
   version "0.26.0"
   resolved "https://registry.yarnpkg.com/@graphprotocol/graph-ts/-/graph-ts-0.26.0.tgz#576f995531eebaca4374901aeaff499219e382e8"
   integrity sha512-GW/emOJl+35MXgmIxTnUK7dJtPCaB9u5aAwoLVqJ8swogC794O92UrXMVrAJsherUriu+yI9bLMGmNPOIi60jw==
   dependencies:
     assemblyscript "0.19.10"
 
-"@graphprotocol/graph-ts@^0.24.0":
-  version "0.24.1"
-  resolved "https://registry.yarnpkg.com/@graphprotocol/graph-ts/-/graph-ts-0.24.1.tgz#50961b52b5383f9c5cf5e6e23fa039f24e729ddf"
-  integrity sha512-2vU4m5ZPQIqMlMce/z5vmOtGHRlRmcRhMfemS3NIwxCSxSBGVnX2zb7QBTzzdQKGwsAZdbz6V0okkOtvohELfQ==
+"@graphprotocol/graph-ts@^0.27.0":
+  version "0.27.0"
+  resolved "https://registry.yarnpkg.com/@graphprotocol/graph-ts/-/graph-ts-0.27.0.tgz#948fe1716f6082964a01a63a19bcbf9ac44e06ff"
+  integrity sha512-r1SPDIZVQiGMxcY8rhFSM0y7d/xAbQf5vHMWUf59js1KgoyWpM6P3tczZqmQd7JTmeyNsDGIPzd9FeaxllsU4w==
   dependencies:
     assemblyscript "0.19.10"
 
-"@openzeppelin/contracts@^4.5.0-rc.0":
+"@openzeppelin/contracts@^4.6.0":
   version "4.6.0"
   resolved "https://registry.yarnpkg.com/@openzeppelin/contracts/-/contracts-4.6.0.tgz#c91cf64bc27f573836dba4122758b4743418c1b3"
   integrity sha512-8vi4d50NNya/bQqCmaVzvHNmwHvS0OBKb7HNtuNwEE3scXWrP31fKQoGxNMT+KbzmrNZzatE3QK5p2gFONI/hg==
 
-"@openzeppelin/subgraphs@^0.1.7-1":
-  version "0.1.7-1"
-  resolved "https://registry.yarnpkg.com/@openzeppelin/subgraphs/-/subgraphs-0.1.7-1.tgz#4178baeec4dc456f2373b8832091d7389123780a"
-  integrity sha512-v81MLScb/3ND2FXlAn5eIF9KkGpdsFqhVeH9vCVa7/SsNcMAUYydTBUi1W1bG6+bLiO+4PvlYv+izwzbMe8E7w==
+"@openzeppelin/subgraphs@^0.1.8":
+  version "0.1.8"
+  resolved "https://registry.yarnpkg.com/@openzeppelin/subgraphs/-/subgraphs-0.1.8.tgz#2e4076ecbd6017a7f5e8215b35827c32b06f8d38"
+  integrity sha512-I7A/m1FZ4Z4m9gttVxsQ6Dt2j53PMug/qj/Jyd4JnkgL4OmdunzsYZbj8dfcBG4nbAeMK3H7V9dKCEqB6PAKHw==
   dependencies:
-    "@amxx/graphprotocol-utils" "^1.1.0-alpha.2"
-    "@openzeppelin/contracts" "^4.5.0-rc.0"
+    "@amxx/graphprotocol-utils" "^1.1.0"
+    "@openzeppelin/contracts" "^4.6.0"
 
 "@types/bn.js@^5.1.0":
   version "5.1.0"
@@ -1442,9 +1442,9 @@ glob@^7.1.3:
     once "^1.3.0"
     path-is-absolute "^1.0.0"
 
-"gluegun@https://github.com/edgeandnode/gluegun#v4.3.1-pin-colors-dep":
+"gluegun@git+https://github.com/edgeandnode/gluegun.git#v4.3.1-pin-colors-dep":
   version "4.3.1"
-  resolved "https://github.com/edgeandnode/gluegun#b34b9003d7bf556836da41b57ef36eb21570620a"
+  resolved "git+https://github.com/edgeandnode/gluegun.git#b34b9003d7bf556836da41b57ef36eb21570620a"
   dependencies:
     apisauce "^1.0.1"
     app-module-path "^2.2.0"
@@ -3462,10 +3462,10 @@ yargs-parser@^21.0.0:
   resolved "https://registry.yarnpkg.com/yargs-parser/-/yargs-parser-21.0.1.tgz#0267f286c877a4f0f728fceb6f8a3e4cb95c6e35"
   integrity sha512-9BK1jFpLzJROCI5TzwZL/TU4gqjK5xiHV/RfWLOahrjAko/e4DJkRDZQXfvqAsiZzzYhgAzbgz6lg48jcm4GLg==
 
-yargs@^17.2.1:
-  version "17.5.0"
-  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.5.0.tgz#2706c5431f8c119002a2b106fc9f58b9bb9097a3"
-  integrity sha512-3sLxVhbAB5OC8qvVRebCLWuouhwh/rswsiDYx3WGxajUk/l4G20SKfrKKFeNIHboUFt2JFgv2yfn+5cgOr/t5A==
+yargs@^17.5.1:
+  version "17.5.1"
+  resolved "https://registry.yarnpkg.com/yargs/-/yargs-17.5.1.tgz#e109900cab6fcb7fd44b1d8249166feb0b36e58e"
+  integrity sha512-t6YAJcxDkNX7NFYiVtKvWUz8l+PaKTLiL63mJYWR2GnHq2gjEWISzsLp9wg3aY36dY1j+gfIEL3pIF+XlJJfbA==
   dependencies:
     cliui "^7.0.2"
     escalade "^3.1.1"

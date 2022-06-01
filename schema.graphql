@@ -1,5 +1,5 @@
 type Account @entity {
-  id: ID!
+  id: Bytes!
   asERC1155: ERC1155Contract
   ERC1155balances: [ERC1155Balance!]! @derivedFrom(field: "account")
   ERC1155operatorOwner: [ERC1155Operator!]! @derivedFrom(field: "owner")
@@ -13,10 +13,23 @@ type Account @entity {
   roleGrantedSender: [RoleGranted!]! @derivedFrom(field: "sender")
   roleRevoked: [RoleRevoked!]! @derivedFrom(field: "account")
   roleRevokedSender: [RoleRevoked!]! @derivedFrom(field: "sender")
+  asOwnable: Ownable
+  ownerOf: [Ownable!]! @derivedFrom(field: "owner")
+  ownershipTransferred: [OwnershipTransferred!]! @derivedFrom(field: "owner")
+  asERC721: ERC721Contract
+  ERC721tokens: [ERC721Token!]! @derivedFrom(field: "owner")
+  ERC721operatorOwner: [ERC721Operator!]! @derivedFrom(field: "owner")
+  ERC721operatorOperator: [ERC721Operator!]! @derivedFrom(field: "operator")
+  ERC721transferFromEvent: [ERC721Transfer!]! @derivedFrom(field: "from")
+  ERC721transferToEvent: [ERC721Transfer!]! @derivedFrom(field: "to")
+  asPausable: Pausable
   events: [Event!]! @derivedFrom(field: "emitter")
+  #non generated
+  buys: [Buy!]! @derivedFrom(field: "buyer")
+  sales: [Sale!]! @derivedFrom(field: "seller")
 }
-type ERC1155Contract @entity {
-  id: ID!
+type ERC1155Contract @entity(immutable: true) {
+  id: Bytes!
   asAccount: Account!
   tokens: [ERC1155Token!]! @derivedFrom(field: "contract")
   balances: [ERC1155Balance!]! @derivedFrom(field: "contract")
@@ -49,7 +62,7 @@ type ERC1155Operator @entity {
   operator: Account!
   approved: Boolean!
 }
-type ERC1155Transfer implements Event @entity {
+type ERC1155Transfer implements Event @entity(immutable: true) {
   id: ID!
   emitter: Account!
   transaction: Transaction!
@@ -64,13 +77,13 @@ type ERC1155Transfer implements Event @entity {
   value: BigDecimal!
   valueExact: BigInt!
 }
-type AccessControl @entity {
-  id: ID!
+type AccessControl @entity(immutable: true) {
+  id: Bytes!
   asAccount: Account!
   roles: [AccessControlRole!]! @derivedFrom(field: "contract")
 }
-type Role @entity {
-  id: ID!
+type Role @entity(immutable: true) {
+  id: Bytes!
   roleOf: [AccessControlRole!]! @derivedFrom(field: "role")
 }
 type AccessControlRole @entity {
@@ -89,7 +102,7 @@ type AccessControlRoleMember @entity {
   accesscontrolrole: AccessControlRole!
   account: Account!
 }
-type RoleAdminChanged implements Event @entity {
+type RoleAdminChanged implements Event @entity(immutable: true) {
   id: ID!
   emitter: Account!
   transaction: Transaction!
@@ -98,7 +111,7 @@ type RoleAdminChanged implements Event @entity {
   newAdminRole: AccessControlRole!
   previousAdminRole: AccessControlRole!
 }
-type RoleGranted implements Event @entity {
+type RoleGranted implements Event @entity(immutable: true) {
   id: ID!
   emitter: Account!
   transaction: Transaction!
@@ -107,7 +120,7 @@ type RoleGranted implements Event @entity {
   account: Account!
   sender: Account!
 }
-type RoleRevoked implements Event @entity {
+type RoleRevoked implements Event @entity(immutable: true) {
   id: ID!
   emitter: Account!
   transaction: Transaction!
@@ -115,6 +128,70 @@ type RoleRevoked implements Event @entity {
   role: AccessControlRole!
   account: Account!
   sender: Account!
+}
+type Ownable @entity {
+  id: Bytes!
+  asAccount: Account!
+  owner: Account!
+  ownershipTransferred: [OwnershipTransferred!]! @derivedFrom(field: "contract")
+}
+type OwnershipTransferred implements Event @entity(immutable: true) {
+  id: ID!
+  emitter: Account!
+  transaction: Transaction!
+  timestamp: BigInt!
+  contract: Ownable!
+  owner: Account!
+}
+type ERC721Contract @entity(immutable: true) {
+  id: Bytes!
+  asAccount: Account!
+  supportsMetadata: Boolean
+  name: String
+  symbol: String
+  tokens: [ERC721Token!]! @derivedFrom(field: "contract")
+  operators: [ERC721Operator!]! @derivedFrom(field: "contract")
+  transfers: [ERC721Transfer!]! @derivedFrom(field: "contract")
+}
+type ERC721Token @entity {
+  id: ID!
+  contract: ERC721Contract!
+  identifier: BigInt!
+  owner: Account!
+  approval: Account!
+  uri: String
+  transfers: [ERC721Transfer!]! @derivedFrom(field: "token")
+}
+type ERC721Operator @entity {
+  id: ID!
+  contract: ERC721Contract!
+  owner: Account!
+  operator: Account!
+  approved: Boolean!
+}
+type ERC721Transfer implements Event @entity(immutable: true) {
+  id: ID!
+  emitter: Account!
+  transaction: Transaction!
+  timestamp: BigInt!
+  contract: ERC721Contract!
+  token: ERC721Token!
+  from: Account!
+  to: Account!
+}
+type Pausable @entity {
+  id: Bytes!
+  asAccount: Account!
+  isPaused: Boolean!
+  paused: [Paused!]! @derivedFrom(field: "contract")
+}
+type Paused implements Event @entity(immutable: true) {
+  id: ID!
+  emitter: Account!
+  transaction: Transaction!
+  timestamp: BigInt!
+  contract: Pausable!
+  isPaused: Boolean!
 }
 interface Event {
   id: ID!
@@ -122,9 +199,29 @@ interface Event {
   emitter: Account!
   timestamp: BigInt!
 }
-type Transaction @entity {
+type Transaction @entity(immutable: true) {
   id: ID!
   timestamp: BigInt!
   blockNumber: BigInt!
   events: [Event!]! @derivedFrom(field: "transaction")
+}
+
+# NON-GENERATED SCHEMAS:
+
+type Sale implements Event @entity {
+  seller: Account!
+  nft: ERC1155Token!
+  amount: BigInt!
+  price: BigInt!
+  duration: BigInt!
+  status: BigInt!
+  buys: [Buy!]! @derivedFrom(field: "sale")
+  token: ERC721Token!
+}
+
+type Buy implements Event @entity {
+  buyer: Account!
+  amount: BigInt!
+  price: BigInt!
+  sale: Sale!
 }
