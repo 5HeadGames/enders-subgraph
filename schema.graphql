@@ -64,7 +64,6 @@ type ERC1155Operator @entity {
 }
 type ERC1155Transfer implements Event @entity(immutable: true) {
   id: ID!
-  emitter: Account!
   transaction: Transaction!
   timestamp: BigInt!
   contract: ERC1155Contract!
@@ -104,7 +103,6 @@ type AccessControlRoleMember @entity {
 }
 type RoleAdminChanged implements Event @entity(immutable: true) {
   id: ID!
-  emitter: Account!
   transaction: Transaction!
   timestamp: BigInt!
   role: AccessControlRole!
@@ -113,7 +111,6 @@ type RoleAdminChanged implements Event @entity(immutable: true) {
 }
 type RoleGranted implements Event @entity(immutable: true) {
   id: ID!
-  emitter: Account!
   transaction: Transaction!
   timestamp: BigInt!
   role: AccessControlRole!
@@ -122,7 +119,6 @@ type RoleGranted implements Event @entity(immutable: true) {
 }
 type RoleRevoked implements Event @entity(immutable: true) {
   id: ID!
-  emitter: Account!
   transaction: Transaction!
   timestamp: BigInt!
   role: AccessControlRole!
@@ -196,7 +192,6 @@ type Paused implements Event @entity(immutable: true) {
 interface Event {
   id: ID!
   transaction: Transaction!
-  emitter: Account!
   timestamp: BigInt!
 }
 type Transaction @entity(immutable: true) {

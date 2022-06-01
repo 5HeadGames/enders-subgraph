@@ -11,13 +11,13 @@ dataSources:
       startBlock: 10779635
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
         - ERC1155Contract
       abis:
         - name: IERC1155
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC1155MetadataURI.json
+          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC1155.json
       eventHandlers:
         - event: ApprovalForAll(indexed address,indexed address,bool)
           handler: handleApprovalForAll
@@ -61,13 +61,13 @@ dataSources:
       startBlock: 10779708
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
         - ERC1155Contract
       abis:
         - name: IERC1155
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC1155MetadataURI.json
+          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC1155.json
       eventHandlers:
         - event: ApprovalForAll(indexed address,indexed address,bool)
           handler: handleApprovalForAll
@@ -87,7 +87,7 @@ dataSources:
       startBlock: 10779708
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
         - Ownable
@@ -131,7 +131,7 @@ dataSources:
       startBlock: 10779813
     mapping:
       kind: ethereum/events
-      apiVersion: 0.0.5
+      apiVersion: 0.0.4
       language: wasm/assemblyscript
       entities:
         - Ownable

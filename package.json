@@ -6,13 +6,15 @@
     "build": "graph build",
     "prepare": "yarn codegen && yarn build",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ Rcontre360/endersGate_harmony",
-    "create-local": "graph create --node http://localhost:8020/ Rcontre360/endersGate_harmony",
-    "remove-local": "graph remove --node http://localhost:8020/ Rcontre360/endersGate_harmony",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 Rcontre360/endersGate_harmony"
+    "create:harmony": "graph create --node https://graph.t.hmny.io:8020 harmony/blocks Rcontre360/endersGate_harmony",
+    "create:local": "graph create --node http://localhost:8020/ Rcontre360/endersGate_harmony",
+    "remove:local": "graph remove --node http://localhost:8020/ Rcontre360/endersGate_harmony",
+    "deploy:local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 Rcontre360/endersGate_harmony",
+    "deploy:harmony": "graph deploy --node https://graph.t.hmny.io:8020 --ipfs http://graph.t.hmny.io:5001 Rcontre360/endersGate_harmony"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "0.29.2",
-    "@graphprotocol/graph-ts": "0.26.0",
-    "@openzeppelin/subgraphs": "^0.1.7-1"
+    "@graphprotocol/graph-cli": "^0.21.0",
+    "@graphprotocol/graph-ts": "^0.20.1",
+    "@openzeppelin/subgraphs": "^0.1.0"
   }
 }
