@@ -5,6 +5,7 @@
     "codegen": "graph codegen",
     "build": "graph build",
     "prepare": "yarn codegen && yarn build",
+    "generate:rinkeby": "graph-compiler --config config/rinkeby.json  --include node_modules/@openzeppelin/subgraphs/src/datasources --export-schema --export-subgraph",
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ Rcontre360/endersGate_harmony",
     "create:harmony": "graph create --node https://graph.t.hmny.io:8020 harmony/blocks Rcontre360/endersGate_harmony",
     "create:local": "graph create --node http://localhost:8020/ Rcontre360/endersGate_harmony",
@@ -13,8 +14,8 @@
     "deploy:harmony": "graph deploy --node https://graph.t.hmny.io:8020 --ipfs http://graph.t.hmny.io:5001 Rcontre360/endersGate_harmony"
   },
   "dependencies": {
-    "@graphprotocol/graph-cli": "^0.21.0",
-    "@graphprotocol/graph-ts": "^0.20.1",
-    "@openzeppelin/subgraphs": "^0.1.0"
+    "@graphprotocol/graph-cli": "^0.30.3",
+    "@graphprotocol/graph-ts": "^0.27.0",
+    "@openzeppelin/subgraphs": "^0.1.8"
   }
 }
