@@ -17,7 +17,7 @@ dataSources:
         - ERC1155Contract
       abis:
         - name: IERC1155
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC1155.json
+          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC1155MetadataURI.json
       eventHandlers:
         - event: ApprovalForAll(indexed address,indexed address,bool)
           handler: handleApprovalForAll
@@ -67,7 +67,7 @@ dataSources:
         - ERC1155Contract
       abis:
         - name: IERC1155
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC1155.json
+          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC1155MetadataURI.json
       eventHandlers:
         - event: ApprovalForAll(indexed address,indexed address,bool)
           handler: handleApprovalForAll
@@ -252,7 +252,7 @@ dataSources:
         - event: SaleSuccessful(indexed uint256)
           handler: handleSaleSuccessfull
         - event: BuySuccessful(indexed uint256,address,uint256,uint256)
-          handler: handleBuySuccessful
+          handler: handleBuySuccessfull
         - event: SaleCancelled(indexed uint256)
           handler: handleSaleCancelled
         - event: ChangedFeeReceiver(address)
@@ -280,7 +280,27 @@ dataSources:
         - event: SaleSuccessful(indexed uint256)
           handler: handleSaleSuccessfull
         - event: BuySuccessful(indexed uint256,address,uint256,uint256)
-          handler: handleBuySuccessful
+          handler: handleBuySuccessfull
         - event: SaleCancelled(indexed uint256)
           handler: handleSaleCancelled
       file: ./src/marketplace.ts
+  - kind: ethereum/contract
+    name: Pack
+    network: rinkeby
+    source:
+      address: "0x330A911B116dD1c1D68725E241bfb3B0ae1bCC03"
+      abi: Packs
+      startBlock: 10779708
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - ERC1155Contract
+      abis:
+        - name: Packs
+          file: ./abis/Packs.json
+      eventHandlers:
+        - event: LootBoxOpened(indexed uint256,indexed address,uint256,uint256)
+          handler: handleLootBoxOpened
+      file: ./src/packs.ts

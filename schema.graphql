@@ -26,6 +26,7 @@ type Account @entity {
   events: [Event!]! @derivedFrom(field: "emitter")
   buys: [Buy!]! @derivedFrom(field: "buyer")
   sales: [Sale!]! @derivedFrom(field: "seller")
+  unpacks: [Unpack!]! @derivedFrom(field: "user")
 }
 type ERC1155Contract @entity(immutable: true) {
   id: Bytes!
@@ -228,6 +229,16 @@ type Buy implements Event @entity @entity(immutable: true) {
   amount: BigInt!
   cost: BigInt!
   sale: Sale!
+  transaction: Transaction!
+  timestamp: BigInt!
+  emitter: Account!
+}
+
+type Unpack implements Event @entity @entity(immutable: true) {
+  id: ID!
+  pack: ERC1155Token!
+  user: Account!
+  received: BigInt!
   transaction: Transaction!
   timestamp: BigInt!
   emitter: Account!

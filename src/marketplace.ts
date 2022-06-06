@@ -11,10 +11,12 @@ import {BuySuccessful as BuySuccessfulEvent} from "../generated/Shop/Marketplace
 import {Marketplace} from "../generated/Shop/Marketplace";
 import {Buy, Sale} from "../generated/schema";
 
-function getSale(contractAdd: Address, saleId: BigInt): Sale {
+import {log} from "@graphprotocol/graph-ts";
+
+function getSale(contractAdd: Address, saleId: BigInt, prefix: string): Sale {
 	const erc721 = fetchERC721(contractAdd);
 	const marketplace = Marketplace.bind(contractAdd);
-	const id = saleId.toHex();
+	const id = prefix.concat("/").concat(saleId.toHex());
 	let sale = Sale.load(id);
 
 	if (sale == null) {
@@ -36,7 +38,7 @@ function getSale(contractAdd: Address, saleId: BigInt): Sale {
 }
 
 export function handleSaleCreated(event: SaleCreatedEvent): void {
-	const sale = getSale(event.address, event.params._auctionId);
+	const sale = getSale(event.address, event.params._auctionId, event.address.toHex());
 	sale.transaction = transactions.log(event).id;
 	sale.timestamp = event.block.timestamp;
 	sale.emitter = event.address;
@@ -44,19 +46,20 @@ export function handleSaleCreated(event: SaleCreatedEvent): void {
 }
 
 export function handleSaleSuccessfull(event: SaleSuccessfulEvent): void {
-	const sale = getSale(event.address, event.params._aucitonId);
+	const sale = getSale(event.address, event.params._aucitonId, event.address.toHex());
 	sale.status = BigInt.fromI32(1);
 	sale.save();
 }
 
 export function handleBuySuccessfull(event: BuySuccessfulEvent): void {
-	const sale = getSale(event.address, event.params._aucitonId);
-	const buy = new Buy(event.params._aucitonId.toHex().concat(transactions.log(event).id));
+	const sale = getSale(event.address, event.params._aucitonId, event.address.toHex());
+	const buy = new Buy(event.transaction.hash.toHex().concat("/").concat(event.logIndex.toString()));
 	buy.transaction = transactions.log(event).id;
 	buy.timestamp = event.block.timestamp;
 	buy.emitter = event.address;
+	buy.sale = event.address.toHex().concat("/").concat(event.params._aucitonId.toHex());
 
-	buy.buyer = event.params._buyer;
+	buy.buyer = fetchAccount(event.params._buyer).id;
 	buy.amount = event.params._nftAmount;
 	buy.cost = event.params._cost;
 
@@ -67,7 +70,7 @@ export function handleBuySuccessfull(event: BuySuccessfulEvent): void {
 }
 
 export function handleSaleCancelled(event: SaleCancelledEvent): void {
-	const sale = getSale(event.address, event.params._auctionId);
+	const sale = getSale(event.address, event.params._auctionId, event.address.toHex());
 	sale.status = BigInt.fromI32(2);
 	sale.save();
 }
