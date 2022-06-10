@@ -255,8 +255,6 @@ dataSources:
           handler: handleBuySuccessfull
         - event: SaleCancelled(indexed uint256)
           handler: handleSaleCancelled
-        - event: ChangedFeeReceiver(address)
-          handler: handleChangedFeeReceiver
       file: ./src/marketplace.ts
   - kind: ethereum/contract
     name: Shop
