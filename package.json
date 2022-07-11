@@ -9,9 +9,9 @@
     "deploy": "graph deploy --node https://api.thegraph.com/deploy/ Rcontre360/endersGate_harmony",
     "test": "graph deploy --studio enderstest",
     "create:harmony": "graph create --node https://graph.t.hmny.io:8020 harmony/blocks Rcontre360/endersGate_harmony",
-    "create:local": "graph create --node http://localhost:8020/ Rcontre360/endersGate_harmony",
-    "remove:local": "graph remove --node http://localhost:8020/ Rcontre360/endersGate_harmony",
-    "deploy:local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 Rcontre360/endersGate_harmony",
+    "create:local": "graph create --node http://localhost:8000/ Rcontre360/endersGate_harmony",
+    "remove:local": "graph remove --node http://localhost:8000/ Rcontre360/endersGate_harmony",
+    "deploy:local": "graph deploy --node http://localhost:8000/ --ipfs http://localhost:5001 Rcontre360/endersGate_harmony",
     "deploy:harmony": "graph deploy --node https://graph.t.hmny.io:8020 --ipfs http://graph.t.hmny.io:5001 Rcontre360/endersGate_harmony"
   },
   "dependencies": {
