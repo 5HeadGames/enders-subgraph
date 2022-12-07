@@ -3,3 +3,6 @@
 /node_modules
 /data
 yarn-error.log
+yarn.lock
+package-lock.json
+pnpm-lock.yaml
