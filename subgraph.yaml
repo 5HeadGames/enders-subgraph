@@ -1,330 +1,41 @@
 specVersion: 0.0.4
 schema:
-  file: schema.graphql
+  file: ./schema.graphql
 dataSources:
-  - kind: ethereum/contract
-    name: erc1155
+  - kind: ethereum
+    name: EndersGate
     network: harmony
     source:
       address: "0xAd6f94bDefB6D5ae941392Da5224ED083AE33adc"
-      abi: IERC1155
-      startBlock: 25855600
+      abi: EndersGate
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.5
       language: wasm/assemblyscript
       entities:
-        - ERC1155Contract
+        - ApprovalForAll
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - TransferBatch
+        - TransferSingle
+        - URI
       abis:
-        - name: IERC1155
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC1155MetadataURI.json
+        - name: EndersGate
+          file: ./abis/EndersGate.json
       eventHandlers:
         - event: ApprovalForAll(indexed address,indexed address,bool)
           handler: handleApprovalForAll
-        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
-          handler: handleTransferBatch
-        - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
-          handler: handleTransferSingle
-        - event: URI(string,indexed uint256)
-          handler: handleURI
-      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/erc1155.ts
-  - kind: ethereum/contract
-    name: accesscontrol
-    network: harmony
-    source:
-      address: "0xAd6f94bDefB6D5ae941392Da5224ED083AE33adc"
-      abi: AccessControl
-      startBlock: 25855600
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - AccessControl
-      abis:
-        - name: AccessControl
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/IAccessControl.json
-      eventHandlers:
         - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
           handler: handleRoleAdminChanged
         - event: RoleGranted(indexed bytes32,indexed address,indexed address)
           handler: handleRoleGranted
         - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
           handler: handleRoleRevoked
-      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/accesscontrol.ts
-  - kind: ethereum/contract
-    name: erc1155-2
-    network: harmony
-    source:
-      address: "0xb90Dc9e354001e6260DE670EDD6aBaDb890C6aC9"
-      abi: IERC1155
-      startBlock: 25855832
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - ERC1155Contract
-      abis:
-        - name: IERC1155
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC1155MetadataURI.json
-      eventHandlers:
-        - event: ApprovalForAll(indexed address,indexed address,bool)
-          handler: handleApprovalForAll
         - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
           handler: handleTransferBatch
         - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
           handler: handleTransferSingle
         - event: URI(string,indexed uint256)
           handler: handleURI
-      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/erc1155.ts
-  - kind: ethereum/contract
-    name: ownable
-    network: harmony
-    source:
-      address: "0xb90Dc9e354001e6260DE670EDD6aBaDb890C6aC9"
-      abi: Ownable
-      startBlock: 25855832
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - Ownable
-      abis:
-        - name: Ownable
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/Ownable.json
-      eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/ownable.ts
-  - kind: ethereum/contract
-    name: erc721
-    network: harmony
-    source:
-      address: "0xAe414077fDAEf7ce46ED2Fd47FA30eCa0527a0B5"
-      abi: IERC721
-      startBlock: 26526792
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - ERC721Contract
-      abis:
-        - name: IERC721
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC721Metadata.json
-      eventHandlers:
-        - event: Approval(indexed address,indexed address,indexed uint256)
-          handler: handleApproval
-        - event: ApprovalForAll(indexed address,indexed address,bool)
-          handler: handleApprovalForAll
-        - event: Transfer(indexed address,indexed address,indexed uint256)
-          handler: handleTransfer
-      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/erc721.ts
-  - kind: ethereum/contract
-    name: ownable-5
-    network: harmony
-    source:
-      address: "0xAe414077fDAEf7ce46ED2Fd47FA30eCa0527a0B5"
-      abi: Ownable
-      startBlock: 26526792
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - Ownable
-      abis:
-        - name: Ownable
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/Ownable.json
-      eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/ownable.ts
-  - kind: ethereum/contract
-    name: pausable
-    network: harmony
-    source:
-      address: "0xAe414077fDAEf7ce46ED2Fd47FA30eCa0527a0B5"
-      abi: Pausable
-      startBlock: 26526792
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - Pausable
-      abis:
-        - name: Pausable
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/Pausable.json
-      eventHandlers:
-        - event: Paused(address)
-          handler: handlePaused
-        - event: Unpaused(address)
-          handler: handleUnpaused
-      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/pausable.ts
-  - kind: ethereum/contract
-    name: erc721-7
-    network: harmony
-    source:
-      address: "0x463b5Fe6DD5633E6feCb286FdbAB9D3A9A75B038"
-      abi: IERC721
-      startBlock: 27061136
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - ERC721Contract
-      abis:
-        - name: IERC721
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/IERC721Metadata.json
-      eventHandlers:
-        - event: Approval(indexed address,indexed address,indexed uint256)
-          handler: handleApproval
-        - event: ApprovalForAll(indexed address,indexed address,bool)
-          handler: handleApprovalForAll
-        - event: Transfer(indexed address,indexed address,indexed uint256)
-          handler: handleTransfer
-      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/erc721.ts
-  - kind: ethereum/contract
-    name: ownable-8
-    network: harmony
-    source:
-      address: "0x463b5Fe6DD5633E6feCb286FdbAB9D3A9A75B038"
-      abi: Ownable
-      startBlock: 27061136
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - Ownable
-      abis:
-        - name: Ownable
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/Ownable.json
-      eventHandlers:
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/ownable.ts
-  - kind: ethereum/contract
-    name: pausable-9
-    network: harmony
-    source:
-      address: "0x463b5Fe6DD5633E6feCb286FdbAB9D3A9A75B038"
-      abi: Pausable
-      startBlock: 27061136
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - Pausable
-      abis:
-        - name: Pausable
-          file: ./node_modules/@openzeppelin/contracts/build/contracts/Pausable.json
-      eventHandlers:
-        - event: Paused(address)
-          handler: handlePaused
-        - event: Unpaused(address)
-          handler: handleUnpaused
-      file: ./node_modules/@openzeppelin/subgraphs/src/datasources/pausable.ts
-  - kind: ethereum/contract
-    name: Marketplace
-    network: harmony
-    source:
-      address: "0xAe414077fDAEf7ce46ED2Fd47FA30eCa0527a0B5"
-      abi: Marketplace
-      startBlock: 26526792
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - ERC721Contract
-      abis:
-        - name: Marketplace
-          file: ./abis/Marketplace.json
-      eventHandlers:
-        - event: SaleCreated(indexed uint256,uint256,uint256,uint256,address)
-          handler: handleSaleCreated
-        - event: SaleSuccessful(indexed uint256)
-          handler: handleSaleSuccessfull
-        - event: BuySuccessful(indexed uint256,address,uint256,uint256)
-          handler: handleBuySuccessfull
-        - event: SaleCancelled(indexed uint256)
-          handler: handleSaleCancelled
-      file: ./src/marketplace.ts
-  - kind: ethereum/contract
-    name: Shop
-    network: harmony
-    source:
-      address: "0x463b5Fe6DD5633E6feCb286FdbAB9D3A9A75B038"
-      abi: Marketplace
-      startBlock: 27061136
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - ERC721Contract
-      abis:
-        - name: Marketplace
-          file: ./abis/Marketplace.json
-      eventHandlers:
-        - event: SaleCreated(indexed uint256,uint256,uint256,uint256,address)
-          handler: handleSaleCreated
-        - event: SaleSuccessful(indexed uint256)
-          handler: handleSaleSuccessfull
-        - event: BuySuccessful(indexed uint256,address,uint256,uint256)
-          handler: handleBuySuccessfull
-        - event: SaleCancelled(indexed uint256)
-          handler: handleSaleCancelled
-      file: ./src/marketplace.ts
-  - kind: ethereum/contract
-    name: Pack
-    network: harmony
-    source:
-      address: "0xb90Dc9e354001e6260DE670EDD6aBaDb890C6aC9"
-      abi: Packs
-      startBlock: 25855832
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - ERC1155Contract
-      abis:
-        - name: Packs
-          file: ./abis/Packs.json
-      eventHandlers:
-        - event: LootBoxOpened(indexed uint256,indexed address,uint256,uint256)
-          handler: handleLootBoxOpened
-      file: ./src/packs.ts
-  - kind: ethereum/contract
-    name: Shop-2
-    network: harmony
-    source:
-      address: "0x9Ab1147B4FbFcc88bf393D9Acd58D17f262CE4cC"
-      abi: Marketplace
-      startBlock: 27061136
-    mapping:
-      kind: ethereum/events
-      apiVersion: 0.0.5
-      language: wasm/assemblyscript
-      entities:
-        - ERC721Contract
-      abis:
-        - name: Marketplace
-          file: ./abis/Marketplace.json
-      eventHandlers:
-        - event: SaleCreated(indexed uint256,uint256,uint256,uint256,address)
-          handler: handleSaleCreated
-        - event: SaleSuccessful(indexed uint256)
-          handler: handleSaleSuccessfull
-        - event: BuySuccessful(indexed uint256,address,uint256,uint256)
-          handler: handleBuySuccessfull
-        - event: SaleCancelled(indexed uint256)
-          handler: handleSaleCancelled
-      file: ./src/marketplace.ts
+      file: ./src/enders-gate.ts
